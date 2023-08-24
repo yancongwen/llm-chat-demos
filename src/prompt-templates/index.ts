@@ -6,7 +6,7 @@ import {
   HumanMessagePromptTemplate,
 } from 'langchain/prompts';
 
-import config from '../config.js';
+import { azureOpenAIApiConfig } from '../config.js';
 
 const template =
   'You are a helpful assistant that translates {input_language} to {output_language}.';
@@ -21,12 +21,8 @@ const chatPrompt = ChatPromptTemplate.fromPromptMessages([
 ]);
 
 const chatModel = new ChatOpenAI({
-  modelName: 'gpt-3.5-turbo', // Or gpt-3.5-turbo
-  temperature: 0, // For best results with the output fixing parser
-  azureOpenAIApiKey: config.AZURE_OPENAI_API_KEY, // In Node.js defaults to process.env.AZURE_OPENAI_API_KEY
-  azureOpenAIApiVersion: config.AZURE_OPENAI_API_VERSION, // In Node.js defaults to process.env.AZURE_OPENAI_API_VERSION
-  azureOpenAIApiInstanceName: config.AZURE_OPENAI_API_INSTANCE_NAME, // In Node.js defaults to process.env.AZURE_OPENAI_API_INSTANCE_NAME
-  azureOpenAIApiDeploymentName: config.AZURE_OPENAI_API_DEPLOYMENT_NAME, // In Node.js defaults to process.env.AZURE_OPENAI_API_DEPLOYMENT_NAME
+  ...azureOpenAIApiConfig,
+  temperature: 0
 });
 
 const chain = new LLMChain({

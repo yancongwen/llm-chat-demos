@@ -1,13 +1,15 @@
 import { Configuration, OpenAIApi } from 'azure-openai';
 import type { ChatCompletionRequestMessage } from 'azure-openai';
-import config from './config.js';
+import { azureOpenAIApiConfig } from './config.js';
+
+console.log(azureOpenAIApiConfig)
 
 const configuration = new Configuration({
-  apiKey: config.AZURE_OPENAI_API_KEY,
+  apiKey: azureOpenAIApiConfig.azureOpenAIApiKey,
   azure: {
-    apiKey: config.AZURE_OPENAI_API_KEY,
-    endpoint: `https://${config.AZURE_OPENAI_API_INSTANCE_NAME}.openai.azure.com`,
-    deploymentName: config.AZURE_OPENAI_API_DEPLOYMENT_NAME,
+    apiKey: azureOpenAIApiConfig.azureOpenAIApiKey,
+    endpoint: `https://${azureOpenAIApiConfig.azureOpenAIApiInstanceName}.openai.azure.com`,
+    deploymentName: azureOpenAIApiConfig.azureOpenAIApiDeploymentName,
   },
 });
 
@@ -17,7 +19,7 @@ async function createChatCompletion(messages: ChatCompletionRequestMessage[]) {
   let result = '';
   try {
     const response = await openai.createChatCompletion({
-      model: config.AZURE_OPENAI_API_DEPLOYMENT_NAME as string,
+      model: azureOpenAIApiConfig.azureOpenAIApiDeploymentName,
       messages: messages,
       temperature: 0.2,
     });
