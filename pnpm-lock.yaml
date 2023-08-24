@@ -16,6 +16,9 @@ dependencies:
   langchain:
     specifier: ^0.0.132
     version: 0.0.132
+  zod:
+    specifier: ^3.22.2
+    version: 3.22.2
 
 devDependencies:
   '@types/cli-spinner':
