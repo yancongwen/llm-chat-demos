@@ -1,13 +1,9 @@
 {
-    "verbose": true,
-    "watch": [
-        "src"
-    ],
-    "ignore": [
-        "**/test/**",
-        "**/docs/**"
-    ],
+    "watch": ["src"],
+    "ext": "ts",
     "env": {
-        "NODE_ENV": "development"
-    }
-}
+      "NODE_ENV": "development"
+    },
+    "exec": "ts-node --esm src/index.ts"
+  }
+  
