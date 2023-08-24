@@ -14,7 +14,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 async function createChatCompletion(messages: ChatCompletionRequestMessage[]) {
-  let result = "";
+  let result = '';
   try {
     const response = await openai.createChatCompletion({
       model: config.AZURE_OPENAI_API_DEPLOYMENT_NAME as string,
@@ -23,8 +23,8 @@ async function createChatCompletion(messages: ChatCompletionRequestMessage[]) {
     });
     if (response.status === 200) {
       result =
-        response.data.choices[0].message?.content.replace(/^\n+|\n+$/g, "") ||
-        "";
+        response.data.choices[0].message?.content.replace(/^\n+|\n+$/g, '') ||
+        '';
     } else {
       console.log(
         `Something went wrong, code: ${response.status}, ${response.statusText}`

@@ -1,17 +1,17 @@
-import type { ChatCompletionRequestMessageRoleEnum } from 'azure-openai';
-import { createChatCompletion } from './openai.js';
+import type { ChatCompletionRequestMessageRoleEnum } from "azure-openai";
+import { createChatCompletion } from "./openai.js";
 
 type Slot = {
   cellphone?: string;
   people_number?: number;
   meal_time?: string;
-}
+};
 
 export class Chatbot {
   system_propmpt: string;
   slot: Slot;
   slot_labels: string[];
-  messages: { role: ChatCompletionRequestMessageRoleEnum; content: string; }[];
+  messages: { role: ChatCompletionRequestMessageRoleEnum; content: string }[];
 
   constructor() {
     this.system_propmpt = `
@@ -22,8 +22,8 @@ export class Chatbot {
                 获取到的信息：{"cellphone": null, "people_number": null, "meal_time": null}
         `;
     this.slot = {};
-    this.slot_labels = ['meal_time', 'people_number', 'cellphone'];
-    this.messages = [{ role: 'system', content: this.system_propmpt }];
+    this.slot_labels = ["meal_time", "people_number", "cellphone"];
+    this.messages = [{ role: "system", content: this.system_propmpt }];
   }
 
   check_over() {
