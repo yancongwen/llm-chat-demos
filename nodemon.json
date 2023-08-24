@@ -1,0 +1,13 @@
+{
+    "verbose": true,
+    "watch": [
+        "src"
+    ],
+    "ignore": [
+        "**/test/**",
+        "**/docs/**"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    }
+}
