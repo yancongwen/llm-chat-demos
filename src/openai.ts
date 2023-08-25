@@ -2,8 +2,6 @@ import { Configuration, OpenAIApi } from 'azure-openai';
 import type { ChatCompletionRequestMessage } from 'azure-openai';
 import { azureOpenAIApiConfig } from './config.js';
 
-console.log(azureOpenAIApiConfig)
-
 const configuration = new Configuration({
   apiKey: azureOpenAIApiConfig.azureOpenAIApiKey,
   azure: {
